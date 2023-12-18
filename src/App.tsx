@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { ChatClient } from './chat-client';
 
-const URL = 'ENTER_YOUR_WEBSOCKET_URL_HERE';
+const URL = 'wss://7fr27w8hk4.execute-api.ap-northeast-1.amazonaws.com/production/';
 
 const App = () => {
 
@@ -29,7 +29,7 @@ const App = () => {
     } else if (data.publicMessage) {
       setChatRows(oldArray => [...oldArray, <span><b>{data.publicMessage}</b></span>]);
     } else if (data.privateMessage) {
-      alert(data.privateMessage);
+      setChatRows(oldArray => [...oldArray, <span>(PrivateMessage) <b>{data.privateMessage}</b></span>]);
     } else if (data.systemMessage) {
       setChatRows(oldArray => [...oldArray, <span><i>{data.systemMessage}</i></span>]);
     }
